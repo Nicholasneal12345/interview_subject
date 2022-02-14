@@ -1,12 +1,6 @@
-            let all = [];
-            let allItems = [];
 
-            const allCounts = 52;
-            const items = 4;
-
-            // 設定一組幾副牌
+            // 設定一副牌(正常排序)
             function settingAll(allCounts = 52, func) {
-                // 先把52張牌放滿
                 let newPoker = [];
 
                 for(let i = 0; i < allCounts; i = i + 1) {
@@ -14,27 +8,6 @@
                 }
 
                 return newPoker;
-            }
-
-            // 發牌
-            function pokerDeal(pokers, items, pokercounts = pokers.length/items) {
-                // pokers為哪副牌
-                // items分成幾副
-                // pokercounts每副幾張牌
-
-                let newPokers = [];
-
-                // 先根據items在newPokers分成items攤
-                for(let i = 0; i < items; i ++) {
-                    newPokers.push([]);
-                }
-
-                // 將pokers分成items攤並且存進newPokers中
-                for(let i = 0; i < pokers.length; i = i + 1) {
-                    newPokers[Math.floor(i / pokercounts)].push(pokers[i]);
-                }
-
-                return newPokers;
             }
 
             // 打亂牌組
@@ -56,6 +29,23 @@
                 return pokers;
             }
 
-            all = settingAll(allCounts);
+             // 發牌
+             function pokerDeal(pokers, items = 4, pokercounts = pokers.length/items) {
+                // pokers為哪副牌
+                // items分成幾副
+                // pokercounts每副幾張牌
 
-            console.log("洗亂後的牌組: ", shuffle());
+                let newPokers = [];
+
+                // 先根據items在newPokers分成items攤
+                for(let i = 0; i < items; i ++) {
+                    newPokers.push([]);
+                }
+
+                // 將pokers分成items攤並且存進newPokers中
+                for(let i = 0; i < pokers.length; i = i + 1) {
+                    newPokers[Math.floor(i / pokercounts)].push(pokers[i]);
+                }
+
+                return newPokers;
+            }
