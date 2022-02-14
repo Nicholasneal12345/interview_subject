@@ -1,13 +1,13 @@
 
             // 設定一副牌(正常排序)
             function settingAll(allCounts = 52, func) {
-                let newPoker = [];
+                let newPokers = [];
 
                 for(let i = 0; i < allCounts; i = i + 1) {
-                    newPoker.push(i + 1);
+                    newPokers.push(i + 1);
                 }
 
-                return newPoker;
+                return newPokers;
             }
 
             // 打亂牌組
@@ -17,16 +17,16 @@
                 // 這裡的poker是舊有的牌組
 
                 // pokers儲存牌組
-                let pokers = poker?poker:settingAll(allCounts);
+                let newPokers = poker?poker:settingAll(allCounts);
 
                 // 解構賦值語法mdn網址
                 // https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
-                for(let i = 0; i < pokers.length; i++) {
+                for(let i = 0; i < newPokers.length; i++) {
                     const randomIndex = Math.floor(Math.random() * i);
-                    [pokers[i], pokers[randomIndex]] = [pokers[randomIndex], pokers[i]];
+                    [newPokers[i], newPokers[randomIndex]] = [newPokers[randomIndex], newPokers[i]];
                 }
 
-                return pokers;
+                return newPokers;
             }
 
              // 發牌
